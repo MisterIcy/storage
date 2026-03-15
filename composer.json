@@ -25,14 +25,16 @@
         "issues": "https://github.com/mistericy/storage/issues"
     },
     "suggest": {
-        "aws/aws-sdk-php": "To enable AWS S3 Support"
+        "aws/aws-sdk-php": "To enable AWS S3 Support",
+        "psr/container": "To enable PSR-11 Container Support",
+        "psr/log": "To enable PSR-3 Logging Support"
     },
     "minimum-stability": "stable",
     "require-dev": {
         "phpunit/phpunit": "^9.6.34",
         "phpstan/phpstan": "^2.1",
         "friendsofphp/php-cs-fixer": "^3.94",
-        "infection/infection": "^0.32.6"
+        "infection/infection": "^0.26"
     },
     "config": {
         "allow-plugins": {
@@ -43,7 +45,7 @@
             "block-insecure": true
         },
         "platform": {
-            "php": ">=8.0"
+            "php": "8.0"
         }
     }
 }

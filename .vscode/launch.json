@@ -1,0 +1,74 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Passively listens for any XDebug connection on port 9003.
+            // Use this when running scripts or web requests that should
+            // pause on breakpoints you have already set.
+            "name": "Listen for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/workspaces/storage": "${workspaceFolder}"
+            },
+            "ignore": [
+                "**/vendor/**/*.php"
+            ]
+        },
+        {
+            // Launches the currently open PHP file directly via the CLI.
+            // Handy for quickly running a single script with the debugger.
+            "name": "Debug currently open script",
+            "type": "php",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "port": 9003,
+            "pathMappings": {
+                "/workspaces/storage": "${workspaceFolder}"
+            }
+        },
+        {
+            // Runs the full PHPUnit test suite with the debugger attached,
+            // allowing breakpoints to be hit inside src/ and tests/.
+            "name": "PHPUnit: full test suite (debug)",
+            "type": "php",
+            "request": "launch",
+            "program": "${workspaceFolder}/vendor/bin/phpunit",
+            "args": [
+                "--configuration",
+                "${workspaceFolder}/phpunit.xml",
+                "--no-coverage"
+            ],
+            "cwd": "${workspaceFolder}",
+            "port": 9003,
+            "pathMappings": {
+                "/workspaces/storage": "${workspaceFolder}"
+            },
+            "ignore": [
+                "**/vendor/**/*.php"
+            ]
+        },
+        {
+            // Runs only the currently open test file with the debugger attached.
+            // Set breakpoints inside the test or the class under test and press F5.
+            "name": "PHPUnit: debug current test file",
+            "type": "php",
+            "request": "launch",
+            "program": "${workspaceFolder}/vendor/bin/phpunit",
+            "args": [
+                "${file}",
+                "--no-coverage"
+            ],
+            "cwd": "${workspaceFolder}",
+            "port": 9003,
+            "pathMappings": {
+                "/workspaces/storage": "${workspaceFolder}"
+            },
+            "ignore": [
+                "**/vendor/**/*.php"
+            ]
+        }
+    ]
+}

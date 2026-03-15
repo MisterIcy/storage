@@ -1,0 +1,61 @@
+{
+    "name": "PHP Storage Library",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+
+    // Mount the workspace into the standard /workspaces path
+    "workspaceFolder": "/workspaces/storage",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/storage,type=bind,consistency=cached",
+
+    // Allow host.docker.internal resolution on Linux hosts
+    "runArgs": [
+        "--add-host=host.docker.internal:host-gateway"
+    ],
+
+    // Install Composer dependencies after container is created
+    "postCreateCommand": "composer install",
+
+    // VS Code customisations installed inside the container
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // PHP debugging via XDebug (required)
+                "xdebug.php-debug",
+
+                // PHP IntelliSense: code completion, go-to-def, hover docs
+                "bmewburn.vscode-intelephense-client",
+
+                // PHPDoc block generator
+                "neilbrayfield.php-docblocker",
+
+                // Inline PHPStan error highlighting
+                "SanderRonde.phpstan-vscode",
+
+                // PHP CS Fixer integration (format on save)
+                "junstyle.php-cs-fixer",
+
+                // Nicer PHPUnit test runner sidebar
+                "calebporzio.better-phpunit"
+            ],
+            "settings": {
+                // Delegate all PHP language features to Intelephense
+                "php.validate.enable": false,
+                "php.suggest.basic": false,
+
+                // Target PHP 8.0 as the minimum runtime
+                "intelephense.environment.phpVersion": "8.0",
+
+                // PHP executable inside the container
+                "php.debug.executablePath": "/usr/local/bin/php",
+
+                // Format PHP files with PHP CS Fixer on save
+                "[php]": {
+                    "editor.defaultFormatter": "junstyle.php-cs-fixer",
+                    "editor.formatOnSave": true
+                }
+            }
+        }
+    }
+}

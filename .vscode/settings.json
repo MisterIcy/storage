@@ -1,0 +1,52 @@
+{
+    // ── PHP ──────────────────────────────────────────────────────────────────
+    // Disable the bundled basic PHP language features; Intelephense covers them
+    "php.validate.enable": false,
+    "php.suggest.basic": false,
+
+    // PHP binary path inside the dev container
+    "php.debug.executablePath": "/usr/local/bin/php",
+
+    // ── Intelephense ─────────────────────────────────────────────────────────
+    // Align with the minimum PHP version declared in composer.json
+    "intelephense.environment.phpVersion": "8.0",
+
+    // Surface errors and warnings inline
+    "intelephense.diagnostics.enable": true,
+    "intelephense.diagnostics.undefinedTypes": true,
+    "intelephense.diagnostics.undefinedFunctions": true,
+    "intelephense.diagnostics.undefinedConstants": true,
+    "intelephense.diagnostics.undefinedVariables": true,
+
+    // ── PHPStan ──────────────────────────────────────────────────────────────
+    "phpstan.enabled": true,
+    "phpstan.phpstanPath": "${workspaceFolder}/vendor/bin/phpstan",
+
+    // ── PHP CS Fixer ─────────────────────────────────────────────────────────
+    "php-cs-fixer.executablePath": "${workspaceFolder}/vendor/bin/php-cs-fixer",
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.rules": "@PSR12",
+    "php-cs-fixer.allowRisky": false,
+
+    // ── Better PHPUnit ───────────────────────────────────────────────────────
+    "better-phpunit.phpunitBinary": "vendor/bin/phpunit",
+
+    // ── Editor defaults for PHP files ────────────────────────────────────────
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+
+    // ── Files ────────────────────────────────────────────────────────────────
+    "files.associations": {
+        "*.php": "php"
+    },
+    "files.exclude": {
+        "vendor/": true
+    },
+    "search.exclude": {
+        "vendor/": true
+    }
+}
