@@ -51,6 +51,9 @@ class InMemoryAdapter implements
         }
 
         $stream = fopen('php://temp', 'r+');
+        if ($stream === false) {
+            throw new \RuntimeException('Failed to open in-memory stream.');
+        }
         fwrite($stream, $this->files[$key]['content']);
         rewind($stream);
 
@@ -157,7 +160,7 @@ class InMemoryAdapter implements
     /**
      * @return \Generator<int, Path>
      */
-    public function listContents(Path $path): iterable
+    public function listContents(Path $path): \Traversable
     {
         $dirKey = (string) $path;
 

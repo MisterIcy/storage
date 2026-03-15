@@ -11,7 +11,7 @@ interface ListableInterface extends AdapterInterface
     /**
      * List immediate children (files and directories) of the given path.
      *
-     * @return iterable<Path>
+     * @return \Traversable<int, Path>
      */
-    public function listContents(Path $path): iterable;
+    public function listContents(Path $path): \Traversable;
 }

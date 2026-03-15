@@ -140,9 +140,9 @@ class Filesystem implements
     // -------------------------------------------------------------------------
 
     /**
-     * @return iterable<Path>
+     * @return \Traversable<int, Path>
      */
-    public function listContents(Path $path): iterable
+    public function listContents(Path $path): \Traversable
     {
         if (!$this->adapter instanceof ListableInterface) {
             throw new OperationNotSupportedException('listContents');

@@ -32,9 +32,15 @@ final class FilesystemTest extends TestCase
     // Helpers
     // -------------------------------------------------------------------------
 
+    /**
+     * @return resource
+     */
     private function makeStream(string $content = 'data')
     {
         $h = fopen('php://temp', 'r+');
+        if ($h === false) {
+            throw new \RuntimeException('Failed to open temp stream.');
+        }
         fwrite($h, $content);
         rewind($h);
         return $h;

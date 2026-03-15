@@ -31,9 +31,15 @@ final class InMemoryAdapterTest extends TestCase
     // Helpers
     // -------------------------------------------------------------------------
 
+    /**
+     * @return resource
+     */
     private function makeStream(string $content = 'hello')
     {
         $stream = fopen('php://temp', 'r+');
+        if ($stream === false) {
+            throw new \RuntimeException('Failed to open temp stream.');
+        }
         fwrite($stream, $content);
         rewind($stream);
         return $stream;
@@ -49,7 +55,6 @@ final class InMemoryAdapterTest extends TestCase
         $this->adapter->write($path, $this->makeStream('hello world'));
 
         $resource = $this->adapter->read($path);
-        self::assertIsResource($resource);
         self::assertSame('hello world', stream_get_contents($resource));
     }
 
