@@ -1,0 +1,76 @@
+name: Bug Report
+description: Something is not working as expected.
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug. Please fill in as much
+        detail as possible so we can reproduce and fix the issue quickly.
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP Version
+      description: What version of PHP are you running? (`php --version`)
+      placeholder: "e.g. 8.1.27"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: adapter
+    attributes:
+      label: Adapter
+      description: Which storage adapter are you using?
+      options:
+        - InMemoryAdapter
+        - LocalAdapter (planned)
+        - S3Adapter (planned)
+        - FtpAdapter (planned)
+        - Custom / Other (describe in Additional Context)
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: >
+        Provide a minimal, complete, and verifiable reproduction case.
+        The shorter the better — ideally a single PHP snippet.
+      placeholder: |
+        1. Create a `Filesystem` with `new InMemoryAdapter()`
+        2. Call `$fs->write(new Path('/foo.txt'), $stream)`
+        3. Call `$fs->read(new Path('/foo.txt'))`
+        4. See the following error…
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behaviour
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behaviour
+      description: >
+        What actually happened? Include the full exception message and stack
+        trace if applicable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: >
+        Anything else that might be relevant — library version
+        (`composer show mistericy/storage`), operating system, PHP
+        extensions, etc.
+    validations:
+      required: false

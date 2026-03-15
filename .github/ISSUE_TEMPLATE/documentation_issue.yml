@@ -1,0 +1,53 @@
+name: Documentation Issue
+description: Something in the documentation is missing, incorrect, or unclear.
+labels: ["documentation", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve the documentation. Please be as
+        specific as possible about the location and nature of the problem.
+
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: >
+        Where is the documentation problem? Provide a file path, URL, or
+        section heading.
+      placeholder: "e.g. CONTRIBUTING.md § Proposing and Shipping a New Adapter"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Issue Type
+      options:
+        - Incorrect information
+        - Missing information
+        - Unclear / hard to follow
+        - Outdated
+        - Typo / grammar
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: >
+        Describe what is wrong or missing, and what the correct or improved
+        version should say.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Improvement
+      description: >
+        If you have a suggested rewrite or addition, paste it here. This
+        greatly speeds up resolution.
+    validations:
+      required: false

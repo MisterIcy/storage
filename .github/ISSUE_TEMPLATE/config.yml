@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Report a Security Vulnerability
+    url: https://github.com/mistericy/storage/security/advisories/new
+    about: >
+      Please report security vulnerabilities privately using GitHub's Security
+      Advisory feature. Do NOT open a public issue for security concerns.
