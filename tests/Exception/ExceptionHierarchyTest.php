@@ -47,19 +47,6 @@ final class ExceptionHierarchyTest extends TestCase
         throw new StorageException('thrown');
     }
 
-    public function testStorageExceptionCanBeCaughtAsRuntimeException(): void
-    {
-        $caught = false;
-
-        try {
-            throw new StorageException('thrown');
-        } catch (\RuntimeException $e) {
-            $caught = true;
-        }
-
-        self::assertTrue($caught);
-    }
-
     // ── FileNotFoundException ────────────────────────────────────────────────
 
     public function testFileNotFoundExceptionExtendsStorageException(): void
