@@ -116,7 +116,7 @@ jobs:
           restore-keys: ${{ runner.os }}-phpstan-
 
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse --error-format=github --no-progress --tmp-dir=/tmp/phpstan-cache
+        run: ./vendor/bin/phpstan analyse --error-format=github --no-progress
 
   # -------------------------------------------------------------------------
   # Job 4 – Test Suite (matrix: PHP 8.0 → 8.4)
