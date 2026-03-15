@@ -30,6 +30,9 @@
         "psr/log": "To enable PSR-3 Logging Support"
     },
     "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.6.34",
         "phpstan/phpstan": "^2.1",
