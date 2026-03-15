@@ -1,0 +1,32 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "logs": {
+        // Human-readable full log of all mutants (killed, escaped, not covered)
+        "text": "build/infection/infection.log",
+        // Machine-readable log for agents and tooling (includes diffs and test output)
+        "json": "build/infection/infection.json",
+        // Visual HTML report similar to PHPUnit's — best for code review
+        "html": "build/infection/infection.html",
+        // Brief summary counts per category — useful in CI output
+        "summary": "build/infection/infection-summary.log",
+        // Per-mutator breakdown in Markdown — useful for tracking mutator effectiveness
+        "perMutator": "build/infection/per-mutator.md",
+        // Annotate escaped mutants as GitHub Actions warnings on PRs (auto-detected)
+        "github": true
+    },
+    "mutators": {
+        "@default": true
+    },
+    // Fail the CI build if MSI drops below the current baseline
+    "minMsi": 85,
+    "minCoveredMsi": 85,
+    // Do not fail when there are no mutations (e.g. new files with no testable code yet)
+    "ignoreMsiWithNoMutations": true,
+    // Kill mutants that keep tests running longer than 10 seconds
+    "timeout": 10
+}
